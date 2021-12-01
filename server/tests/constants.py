@@ -1,0 +1,6 @@
+CURRENT_TIME = '2021-11-28T12:08:51.636154+00:00'
+
+DATETIME_RESPONSE = {
+    'created_at': CURRENT_TIME,
+    'updated_at': CURRENT_TIME,
+}

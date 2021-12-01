@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "admin_panel"
+version = "0.1.0"
+description = ""
+authors = ["Timur Safin <timurtlt96@mail.ru>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Django = "^3.2.9"
+uWSGI = "^2.0.20"
+psycopg2-binary = "^2.9.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

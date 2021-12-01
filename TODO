@@ -1,0 +1,8 @@
+create .dockerignore for all projects
+create .gitignore for all projects
+declare "all" in server packages
+
+create constants for max_length
+
+create negative tests
+create custom validation error

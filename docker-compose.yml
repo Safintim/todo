@@ -1,0 +1,52 @@
+version: "3.7"
+
+x-db-config: &db-config
+  DATABASE_NAME: postgres
+  DATABASE_USER: postgres
+  DATABASE_PASSWORD: pgpassword
+  DATABASE_HOST: db
+  DATABASE_PORT: 5432
+  POSTGRES_PASSWORD: pgpassword
+  DJANGO_SECRET_KEY: secret_key
+
+services:
+  api:
+    image: todo_api
+    build:
+      context: ./server
+    environment:
+      <<: *db-config
+    depends_on:
+      - db
+    ports:
+      - "8002:8000"
+    volumes:
+      - ./server:/app:cached
+      - ~/.zsh_history:/root/.bash_history
+    stdin_open: true
+    tty: true
+
+  admin:
+    image: todo_admin
+    build:
+      context: ./admin_panel
+    environment:
+      <<: *db-config
+    depends_on:
+      - db
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./admin_panel:/app:cached
+    stdin_open: true
+    tty: true
+
+  db:
+    image: postgres:12.5-alpine
+    environment: *db-config
+    logging:
+      driver: none
+    ports:
+      - "5433:5432"
+volumes:
+    notused:
